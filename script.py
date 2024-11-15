@@ -91,10 +91,10 @@ for root, dirs, files in os.walk('.'):
             axes[3, 1].set_ylabel("Frequency")
             axes[3, 1].text(0.5, 0.5, 'Back Engineering Labs', transform=axes[3, 1].transAxes, fontsize=30, color='gray', alpha=0.5, ha='center', va='center', rotation=30)
 
-            output_path = os.path.join(root, 'graph.png')
+            output_path = os.path.join(root, 'results.png')
             plt.savefig(output_path)
             plt.close(fig)
-            print(f"Graph saved to {output_path}")
+            print(f"Results saved to {output_path}")
 
         except Exception as e:
             print(f"Error generating graph for {os.path.basename(root)}: {e}")

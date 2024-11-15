@@ -21,6 +21,7 @@ Statistics from our binary transformation framework. All files in this repo are 
 - `nvlddmkm` - NVIDIA's GPU Driver 25.21.14.2591
 - `OrcV2CBindingsIRTransforms` - Another LLVM JIT example, [source here](https://code.ornl.gov/llvm-doe/llvm-project/-/blob/f756d38abf2ec40ee06ee5aa668db444e5d6f485/llvm/examples/OrcV2Examples/OrcV2CBindingsIRTransforms/OrcV2CBindingsIRTransforms.c)
 - `Signal` - [Signal](https://signal.org/) main executable, version 7.4.0.0
+- `Telegram` - [Telegram](https://telegram.org/) main executable, version 5.7.2.0
 - `x64dbg` - [mrexodia (Duncan Ogilvie)](https://github.com/mrexodia) x64dbg dll
 - `x64gui` - [mrexodia (Duncan Ogilvie)](https://github.com/mrexodia) x64gui dll
 - `xul` - [Tor (aka Firefox)](https://gitlab.torproject.org/tpo/applications/tor-browser) main dll xul, version 115.15.0.9012
@@ -29,7 +30,7 @@ Each folder contains the following files:
 
 - `func-info.csv` - This is a CSV file that contains function and basic block information, including reference counts.
 - `func-leaaf.csv` - Tells you the [leaf status](https://learn.microsoft.com/en-us/cpp/build/stack-usage?view=msvc-170#function-types) of every function we identified. 
-- `graph.png` - Statistic results for the binary.
+- `results.png` - Statistic results for the binary.
 - `[file name]-coverage.svg` - The coverage statistics. ***Any function within the "transformed" catagory of the piechart can be obfuscated.***
 - `[file name]` - The binary file name, same as the folder name.
 
