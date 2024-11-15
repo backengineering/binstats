@@ -33,6 +33,15 @@ Each folder contains the following files:
 - `[file name]-coverage.svg` - The coverage statistics. ***Any function within the "transformed" catagory of the piechart can be obfuscated.***
 - `[file name]` - The binary file name, same as the folder name.
 
+### Generating Results
+
+***Requires python 3.x***
+
+```bash
+pip install -r requirements.txt
+python script.py
+```
+
 ### Special Thanks
 
 Special thanks to [mrexodia (Duncan Ogilvie)](https://github.com/mrexodia) and the rest of the people who maintain [x64dbg](https://github.com/x64dbg/x64dbg). We have spent thousands of hours building this binary transformation framework, many of those hours we spent in x64dbg.
