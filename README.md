@@ -25,6 +25,14 @@ Statistics from our binary transformation framework. All files in this repo are 
 - `x64gui` - [mrexodia (Duncan Ogilvie)](https://github.com/mrexodia) x64gui dll
 - `xul` - [Tor (aka Firefox)](https://gitlab.torproject.org/tpo/applications/tor-browser) main dll xul, version 115.15.0.9012
 
+Each folder contains the following files:
+
+- `func-info.csv` - This is a CSV file that contains function and basic block information, including reference counts.
+- `func-leaaf.csv` - Tells you the [leaf status](https://learn.microsoft.com/en-us/cpp/build/stack-usage?view=msvc-170#function-types) of every function we identified. 
+- `graph.png` - Statistic results for the binary.
+- `[file name]-coverage.svg` - The coverage statistics. ***Any function within the "transformed" catagory of the piechart can be obfuscated.***
+- `[file name]` - The binary file name, same as the folder name.
+
 ### Special Thanks
 
 Special thanks to [mrexodia (Duncan Ogilvie)](https://github.com/mrexodia) and the rest of the people who maintain [x64dbg](https://github.com/x64dbg/x64dbg). We have spent thousands of hours building this binary transformation framework, many of those hours we spent in x64dbg.
