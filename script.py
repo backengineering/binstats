@@ -31,7 +31,7 @@ for root, dirs, files in os.walk('.'):
 
             # New Plot: Top 10 Largest Instructions by Length with Address Annotations
             largest_instructions = instructions_df.nlargest(11, 'Length')
-            ax = sns.barplot(x=largest_instructions['Code'], y=largest_instructions['Length'], ax=axes[0, 1], palette="Blues_d")
+            ax = sns.barplot(x=largest_instructions['Mnemonic'], y=largest_instructions['Length'], ax=axes[0, 1], palette="Blues_d")
             axes[0, 1].set_title("Top 10 Largest Instructions by Length")
             axes[0, 1].set_xlabel("")
             axes[0, 1].set_ylabel("Instruction Length (Bytes)")
