@@ -5,6 +5,51 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
+###
+# Aggregate data to summary.csv
+###
+def summary_information():
+    output_file = "summary.csv"
+    aggregated_data = []
+
+    for folder_name in os.listdir(os.getcwd()):
+        folder_path = os.path.join(os.getcwd(), folder_name)
+        if not os.path.isdir(folder_path) or folder_name.startswith('.'):
+            continue
+
+        func_info_path = os.path.join(folder_path, "func-info.csv")
+        inst_data_path = os.path.join(folder_path, "inst-data.csv")
+
+        try:
+            func_info = pd.read_csv(func_info_path)
+            inst_data = pd.read_csv(inst_data_path)
+            avg_basic_block_size = func_info["Size"].mean()
+            func_sizes = func_info.groupby("Function")["Size"].sum()
+            largest_function = func_sizes.idxmax()
+            largest_function_size = func_sizes.max()
+            largest_instruction = inst_data.loc[inst_data["Length"].idxmax()]
+            largest_instruction_address = largest_instruction["Address"]
+            largest_instruction_mnemonic = largest_instruction["Mnemonic"]
+            most_referenced = func_info.loc[func_info["ReferenceCount"].idxmax()]
+            most_referenced_block = most_referenced["BasicBlock"]
+            most_referenced_count = most_referenced["ReferenceCount"]
+            aggregated_data.append({
+                "Executable": folder_name,
+                "AvgBasicBlockSize": avg_basic_block_size,
+                "LargestFunction": largest_function,
+                "LargestFunctionSize": largest_function_size,
+                "LargestInstructionAddress": largest_instruction_address,
+                "LargestInstructionMnemonic": largest_instruction_mnemonic,
+                "MostReferencedBlock": most_referenced_block,
+                "MostReferencedCount": most_referenced_count
+            })
+        except Exception as e:
+            print(f"Error processing {folder_name}: {e}")
+            
+    summary_df = pd.DataFrame(aggregated_data)
+    summary_df.to_csv(output_file, index=False)
+    print(f"Aggregated data saved to {output_file}")
+
 def basic_block_info():
     root_dir = os.getcwd()
     dataframes = []
@@ -186,3 +231,4 @@ def gen_program_results():
 
 gen_program_results()
 basic_block_info()
+summary_information()
