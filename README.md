@@ -49,10 +49,10 @@ Special thanks to [mrexodia (Duncan Ogilvie)](https://github.com/mrexodia) and t
 
 ### TODO
 
-- [] Size of the most referenced basic block
-- [] Number of basic blocks in the largest function
-- [] number of instructions in the largest function
-- [] average function size
-- [] add UEFI files (bootmgfw)
-- [] Executable env column
-- [] Extend data set and make visuals (1 and 2 var visuals)
+-[] Size of the most referenced basic block
+-[] Number of basic blocks in the largest function
+-[] number of instructions in the largest function
+-[] average function size
+-[] add UEFI files (bootmgfw)
+-[] Executable env column
+-[] Extend data set and make visuals (1 and 2 var visuals)
