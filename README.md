@@ -46,3 +46,13 @@ python script.py
 ### Special Thanks
 
 Special thanks to [mrexodia (Duncan Ogilvie)](https://github.com/mrexodia) and the rest of the people who maintain [x64dbg](https://github.com/x64dbg/x64dbg). We have spent thousands of hours building this binary transformation framework, many of those hours we spent in x64dbg.
+
+### TODO
+
+- [] Size of the most referenced basic block
+- [] Number of basic blocks in the largest function
+- [] number of instructions in the largest function
+- [] average function size
+- [] add UEFI files (bootmgfw)
+- [] Executable env column
+- [] Extend data set and make visuals (1 and 2 var visuals)
