@@ -23,29 +23,45 @@ def summary_information():
         try:
             func_info = pd.read_csv(func_info_path)
             inst_data = pd.read_csv(inst_data_path)
+
+            # Calculate requested metrics
             avg_basic_block_size = func_info["Size"].mean()
             func_sizes = func_info.groupby("Function")["Size"].sum()
             largest_function = func_sizes.idxmax()
             largest_function_size = func_sizes.max()
+            num_basic_blocks_largest_func = func_info[func_info["Function"] == largest_function]["BasicBlock"].nunique()
+            avg_function_size = func_sizes.mean()
+
             largest_instruction = inst_data.loc[inst_data["Length"].idxmax()]
             largest_instruction_address = largest_instruction["Address"]
             largest_instruction_mnemonic = largest_instruction["Mnemonic"]
+
             most_referenced = func_info.loc[func_info["ReferenceCount"].idxmax()]
             most_referenced_block = most_referenced["BasicBlock"]
             most_referenced_count = most_referenced["ReferenceCount"]
+            most_referenced_block_size = most_referenced["Size"]
+
+            instructions_in_largest_func = inst_data[inst_data["Code"].isin(
+                func_info[func_info["Function"] == largest_function]["BasicBlock"]
+            )]["Count"].sum()
+
             aggregated_data.append({
                 "Executable": folder_name,
                 "AvgBasicBlockSize": avg_basic_block_size,
                 "LargestFunction": largest_function,
                 "LargestFunctionSize": largest_function_size,
+                "NumBasicBlocksInLargestFunc": num_basic_blocks_largest_func,
+                "NumInstructionsInLargestFunc": instructions_in_largest_func,
+                "AvgFunctionSize": avg_function_size,
                 "LargestInstructionAddress": largest_instruction_address,
                 "LargestInstructionMnemonic": largest_instruction_mnemonic,
                 "MostReferencedBlock": most_referenced_block,
-                "MostReferencedCount": most_referenced_count
+                "MostReferencedCount": most_referenced_count,
+                "MostReferencedBlockSize": most_referenced_block_size
             })
         except Exception as e:
             print(f"Error processing {folder_name}: {e}")
-            
+
     summary_df = pd.DataFrame(aggregated_data)
     summary_df.to_csv(output_file, index=False)
     print(f"Aggregated data saved to {output_file}")
@@ -231,4 +247,4 @@ def gen_program_results():
 
 gen_program_results()
 basic_block_info()
-summary_information()
+# summary_information()
