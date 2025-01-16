@@ -247,4 +247,4 @@ def gen_program_results():
 
 gen_program_results()
 basic_block_info()
-# summary_information()
+summary_information()
